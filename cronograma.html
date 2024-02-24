@@ -1,29 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CRONOGRAMA</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
     </head>
+
     <body>
-        <nav class="navbar bg-info">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="/IMG/UTE-inicio.png" alt="Bootstrap" width="120"
-                        height="80">
-                </a>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar mb-4">
+                <img src="public/UTE_2.png" alt="Bootstrap" width="40%" height="40%">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <p><a class="nav-link text-dark mb-4" href="crear-cronograma.html">Crear Cronograma</a></p>
+                    </li>
+                    <li class="nav-item active">
+                        <p><a class="nav-link text-dark mb-4" href="index.html">
+                                index
+                            </a></p>
+                    </li>
+                    <li class="nav-item active">
+                        <p><a class="nav-link text-dark mb-4" href="cronograma.html">
+                                cronograma
+                            </a></p>
+                    </li>
+                </ul>
             </div>
         </nav>
+
 
         <h1 class="mb-4">CRONOGRAMA</h1>
 
         <section>
             <div class="container-fluid cronograma-tabla" id="maintable">
                 <div>
-                    <img src="/IMG/UTE.png"
-                        class="rounded mx-auto d-block imgute " alt="...">
+                    <img src="/IMG/UTE.png" class="rounded mx-auto d-block imgute " alt="...">
                 </div>
                 <div class="text-center">
                     <p class="text-capitalize">Carrera:</p>
@@ -33,8 +55,7 @@
                     <p class="text-uppercase">CRONOGRAMA DE ASIGNATURA</p>
                 </div>
 
-                <table
-                    class="table table-responsive table-secondary mb-4 mytable ">
+                <table class="table table-responsive table-secondary mb-4 mytable ">
                     <thead>
                         <tr>
                             <th scope="col">Sesión por semana</th>
@@ -73,46 +94,46 @@
         </section>
 
         <div class="btnimp container-fluid">
-            <button class="btn btn-primary btn-lg" id="pdfout"
-                type="submit">Button</button>
+            <button class="btn btn-primary btn-lg" id="pdfout" type="submit">Button</button>
         </div>
 
-<script>
-var maintable = document.getElementById('maintable'), pdfout = document.getElementById('pdfout');
-pdfout.onclick = function(){
-            var doc = new jsPDF('p', 'pt', 'letter'); 
-            var margin = 20; 
-            var scale = (doc.internal.pageSize.width - margin * 2) / document.body.clientWidth; 
-            var scale_mobile = (doc.internal.pageSize.width - margin * 2) / document.body.getBoundingClientRect(); 
+        <script>
+            var maintable = document.getElementById('maintable'), pdfout = document.getElementById('pdfout');
+            pdfout.onclick = function () {
+                var doc = new jsPDF('p', 'pt', 'letter');
+                var margin = 20;
+                var scale = (doc.internal.pageSize.width - margin * 2) / document.body.clientWidth;
+                var scale_mobile = (doc.internal.pageSize.width - margin * 2) / document.body.getBoundingClientRect();
 
-            
-            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-                
-                doc.html(maintable, { 
-                    x: margin,
-                    y: margin,
-                    html2canvas:{
-                        scale: scale_mobile,
-                    },
-                    callback: function(doc){
-                        doc.output('dataurlnewwindow', {filename: 'pdf.pdf'}); 
-                    }
-                });
-            } else{
-                 
-                doc.html(maintable, {
-                    x: margin,
-                    y: margin,
-                    html2canvas:{
-                        scale: scale,
-                    },
-                    callback: function(doc){
-                        doc.output('dataurlnewwindow', {filename: 'pdf.pdf'}); 
-                    }
-                });
-            }
-        };
-</script>
+
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+
+                    doc.html(maintable, {
+                        x: margin,
+                        y: margin,
+                        html2canvas: {
+                            scale: scale_mobile,
+                        },
+                        callback: function (doc) {
+                            doc.output('dataurlnewwindow', { filename: 'pdf.pdf' });
+                        }
+                    });
+                } else {
+
+                    doc.html(maintable, {
+                        x: margin,
+                        y: margin,
+                        html2canvas: {
+                            scale: scale,
+                        },
+                        callback: function (doc) {
+                            doc.output('dataurlnewwindow', { filename: 'pdf.pdf' });
+                        }
+                    });
+                }
+            };
+        </script>
 
     </body>
+
 </html>

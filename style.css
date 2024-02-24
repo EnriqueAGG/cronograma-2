@@ -1,69 +1,92 @@
+body {
+  background-color: #95f1c5;
+}
 
-  body{
-      background-color: #95F1C5;
+.navbar {
+  padding: 0;
+  background-color: #5ce1e6;
+}
+
+h1,
+h4 {
+  text-align: center;
+  color: #0f0f0f;
+}
+
+.t-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+.form-cronograma {
+  padding: 2em;
+  border-radius: 1em;
+  background-color: #05957f;
+}
+
+.t-crear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.imgute {
+  width: 50%;
+  height: 100%;
+}
+
+.mytable {
+  width: 80%;
+  text-align: center;
+  margin: auto 10%;
+  padding: 20px;
+}
+
+.btnimp {
+  display: flex;
+  justify-content: center;
+}
+
+.cronograma-tabla {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  align-items: center;
+  width: 80%;
+  text-align: center;
+}
+
+#error-message {
+  margin: 1rem 0;
+  background-color: rgb(202, 66, 66);
+  color: white;
+  padding: 1rem 0;
+  border-radius: 5px;
+  position: relative;
+  display: none;
+
+  & button {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border: none;
+
+    & :hover {
+      background: #cecccc;
+    }
   }
-  
-  .navbar{
-      padding: 0;
-     background-color: #5CE1E6;
-  }
-  
-  h1, h4{
-      text-align: center;
-      color: #0f0f0f;
-      
-  }
-  
-  .t-login{
-      
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50%;
-    width: 100%;
-    text-align: center;
-  
-      
-  }
-  
-.form-cronograma{
-      padding: 2em;
-      border-radius: 1em;
-      background-color: #05957F;
-  }
-  
-  .t-crear{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .imgute{
-    width: 50%;
-    height: 100%;
-  }
-  
-  .mytable{
-    width: 80%; 
-    text-align: center;
-    margin: auto 10%;
-    padding:20px;
-         
-  }
-  
-  .btnimp{
-    display: flex;
-    justify-content: center;
-  }
-  
-  .cronograma-tabla{
-    display: flex;
-    justify-content: center;
-    background-color: #FFF;
-    align-items: center;
-    width: 80%;
-    text-align: center;
-    
-  }
+}
+
+#success-message {
+  margin: 1rem 0;
+  background-color: rgb(57, 240, 112);
+  padding: 1rem 0;
+  border-radius: 5px;
+  display: none;
+}
