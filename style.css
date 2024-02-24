@@ -1,0 +1,69 @@
+
+  body{
+      background-color: #95F1C5;
+  }
+  
+  .navbar{
+      padding: 0;
+      background-color: #5CE1E6;
+  }
+  
+  h1, h4{
+      text-align: center;
+      color: #0f0f0f;
+      
+  }
+  
+  .t-login{
+      
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+  
+      
+  }
+  
+.form-cronograma{
+      padding: 2em;
+      border-radius: 1em;
+      background-color: #05957F;
+  }
+  
+  .t-crear{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .imgute{
+    width: 50%;
+    height: 100%;
+  }
+  
+  .mytable{
+    width: 80%; 
+    text-align: center;
+    margin: auto 10%;
+    padding:20px;
+         
+  }
+  
+  .btnimp{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cronograma-tabla{
+    display: flex;
+    justify-content: center;
+    background-color: #FFF;
+    align-items: center;
+    width: 80%;
+    text-align: center;
+    
+  }
