@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link rel="stylesheet" href="./scss/styles.scss" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg mb-5">
+      <div class="container-fluid">
+        <img src="/UTE.png" alt="" height="80" class="navbar-brand" />
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Index</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="crear-cronograma.html">Crear cronograma</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cronograma.html">Cronograma</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+
+      <h1 class="mb-4">Nueva fila</h1>
+
+
+      <form class="mb-5" id="form-nueva-fila">
+        <div class="row">
+
+          <div class="col">
+            <div class="mb-3">
+              <label for="sesion" class="form-label">Sesión por semana</label>
+              <input type="number" class="form-control" name="sesion" id="sesion" />
+            </div>
+
+            <div class="d-flex gap-5">
+              <div class="mb-3">
+                <label for="fecha-inicio" class="form-label">Fecha inicio</label>
+                <input type="date" class="form-control" name="fecha-inicio" id="fecha-inicio" />
+              </div>
+              <div class="mb-3">
+                <label for="fecha-final" class="form-label">Fecha final</label>
+                <input type="date" class="form-control" name="fecha-final" id="fecha-final" />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="temas" class="form-label">Unidades temáticas / Temas que integran la asignatura</label>
+              <textarea class="form-control" name="temas" id="temas"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="saber-hacer" class="form-label">Saber hacer</label>
+              <textarea class="form-control" name="saber-hacer" id="saber-hacer"></textarea>
+            </div>
+
+          </div>
+
+          <div class="col">
+
+            <div class="mb-3">
+              <label for="metodos" class="form-label">Métodos y técnicas de enseñanza</label>
+              <textarea class="form-control" name="metodos" id="metodos"></textarea>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="evaluacion" class="form-label">Instrumentos de evaluación y tipos de reactivos</label>
+              <textarea class="form-control" name="evaluacion" id="evaluacion"></textarea>
+            </div>
+
+
+            <div class="d-flex gap-5">
+              <div class="mb-3">
+                <label for="hora-t" class="form-label">Horas T</label>
+                <input type="number" class="form-control" name="hora-t" id="hora-t" />
+              </div>
+
+              <div class="mb-3">
+                <label for="hora-p" class="form-label">Horas P</label>
+                <input type="number" class="form-control" name="hora-p" id="hora-p" />
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+          <button type="submit" class="btn btn-primary w-25-lg w-full m-auto mt-3 btn-lg">Agregar fila</button>
+        </div>
+
+      </form>
+
+    </main>
+
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 ">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto toast-title"></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="module" src="./scripts/agregar-nueva-fila.js"></script>
+
+</html>

@@ -2,20 +2,17 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Index</title>
-        <link rel="stylesheet" href="./scss/styles.scss">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./scss/styles.scss" />
+        <link rel="stylesheet" href="style.css" />
     </head>
 
-
     <body>
-
         <nav class="navbar navbar-expand-lg mb-5">
             <div class="container-fluid">
-
-                <img src="/UTE.png" alt="" height="80" class="navbar-brand">
+                <img src="/UTE.png" alt="" height="80" class="navbar-brand" />
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,62 +36,76 @@
         </nav>
 
         <main class="container">
-            <h1>Cronograma</h1>
-            <span>Cronograma creado</span>
-
-            <hr>
-
             <section>
                 <header>
-                    <div class="row">
-                        <div>
-                            <span>Carrera: </span>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, magni.</span>
+                    <div class="d-flex justify-content-center flex-column">
+                        <div class="d-flex  align-items-end">
+                            <span class="me-2">Carrera: </span>
+                            <span class="fs-5 flex-grow-1 border-2 border-bottom border-dark">Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit. Iure,
+                                magni.
+                            </span>
                         </div>
-                        <span>Cronograma de asignatura</span>
-
+                        <span class="fs-5 text-center my-2 fw-bold">Cronograma de asignatura</span>
                     </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <div>
-                                <div>
-                                    <span>Elaboro:</span>
-                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, esse.</span>
-                                </div>
-                                <div>
-                                    <span>Cuatrimestre:</span>
-                                    <span>5°</span>
-                                </div>
+                    <div class="d-flex mb-3 justify-content-between ">
+                        <div class=" d-flex flex-column">
+                            <div class="d-flex align-items-end gap-2">
+                                <span>Elaboro:</span>
+                                <span class="text-start border-2 border-bottom border-dark">Lorem ipsum dolor
+                                    sit amet
+                                    consectetur adipisicing elit.
+                                    Neque, esse.</span>
                             </div>
-                            <div>
+                            <div class="d-flex align-items-end gap-2">
                                 <span>Materia:</span>
-                                <span>Ingles VI</span>
+                                <span class="w-100 border-2 border-bottom border-dark">Ingles VI</span>
                             </div>
                         </div>
-                        <div class="col">
-                            <div>
-                                <span>Fecha:</span>
-                                <span>03/01/2024</span>
+                        <div class="">
+                            <div class="d-flex align-items-end gap-2">
+                                <span>Cuatrimestre:</span>
+                                <span class="px-2 border-2 border-bottom border-dark">5°</span>
                             </div>
-                            <div>
+                        </div>
+                        <div class="">
+                            <div class="d-flex align-items-end gap-2">
+                                <span class="">Fecha:</span>
+                                <span class="px-2 border-2 border-bottom border-dark">03/01/2024</span>
+                            </div>
+                            <div class="d-flex align-items-end gap-2">
                                 <span>Referencia:</span>
-                                <span>5</span>
+                                <span class="text-center px-2 w-100 border-2 border-bottom border-dark">5</span>
                             </div>
                         </div>
                     </div>
                 </header>
 
-                <table class="table table-bordered border-dark">
+                <table class="table table-bordered border-dark ">
                     <thead class="text-center">
-                        <tr>
-                            <th scope="col" rowspan="2">Sesión por semana</th>
-                            <th scope="col" rowspan="2">Fecha</th>
-                            <th scope="col" rowspan="2">Unidades temáticas / Temas que integran la asignatura</th>
-                            <th scope="col" rowspan="2">Saber hacer</th>
-                            <th scope="col" rowspan="2">Métodos y técnicas de enseñanza</th>
-                            <th scope="col" rowspan="2">Instrumentos de evaluación y tipos de reactivos</th>
-                            <th scope="col" colspan="2">Horas</th>
+                        <tr class="align-middle">
+                            <th scope="col" rowspan="2">
+                                Sesión por semana
+                            </th>
+                            <th scope="col" rowspan="2">
+                                Fecha
+                            </th>
+                            <th scope="col" rowspan="2">
+                                Unidades temáticas / Temas que integran la asignatura
+                            </th>
+                            <th scope="col" rowspan="2">
+                                Saber hacer
+                            </th>
+                            <th scope="col" rowspan="2">
+                                Métodos y técnicas de enseñanza
+                            </th>
+                            <th scope="col" rowspan="2">
+                                Instrumentos de evaluación y tipos de reactivos
+                            </th>
+                            <th scope="col" colspan="2">
+                                Horas
+                            </th>
                         </tr>
                         <tr>
                             <th scope="col">T</th>
@@ -102,7 +113,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!-- <tr>
                             <td>Lorem</td>
                             <td>Lorem</td>
                             <td>Lorem</td>
@@ -111,17 +122,19 @@
                             <td>Lorem</td>
                             <td>Lorem</td>
                             <td>Lorem</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
-                    <tfoot>
+                    <!-- <tfoot>
                         <tr class="text-center">
                             <th colspan="8">Footer</th>
                         </tr>
-                    </tfoot>
+                    </tfoot> -->
                 </table>
+                <div class="my-5">
+                    <a href="nueva-fila-cronograma.html" class="btn btn-primary">Agregar nueva fila al cronograma</a>
+                </div>
             </section>
         </main>
-
     </body>
 
     <script type="module" src="./scripts/obtener-cronograma.js"></script>
