@@ -4,136 +4,126 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CRONOGRAMA</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Index</title>
+        <link rel="stylesheet" href="./scss/styles.scss">
         <link rel="stylesheet" href="style.css">
     </head>
 
+
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar mb-4">
-                <img src="public/UTE_2.png" alt="Bootstrap" width="40%" height="40%">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <p><a class="nav-link text-dark mb-4" href="crear-cronograma.html">Crear Cronograma</a></p>
-                    </li>
-                    <li class="nav-item active">
-                        <p><a class="nav-link text-dark mb-4" href="index.html">
-                                index
-                            </a></p>
-                    </li>
-                    <li class="nav-item active">
-                        <p><a class="nav-link text-dark mb-4" href="cronograma.html">
-                                cronograma
-                            </a></p>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg mb-5">
+            <div class="container-fluid">
+
+                <img src="/UTE.png" alt="" height="80" class="navbar-brand">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Index</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="crear-cronograma.html">Crear cronograma</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cronograma.html">Cronograma</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
+        <main class="container">
+            <h1>Cronograma</h1>
+            <span>Cronograma creado</span>
 
-        <h1 class="mb-4">CRONOGRAMA</h1>
+            <hr>
 
-        <section>
-            <div class="container-fluid cronograma-tabla" id="maintable">
-                <div>
-                    <img src="/IMG/UTE.png" class="rounded mx-auto d-block imgute " alt="...">
-                </div>
-                <div class="text-center">
-                    <p class="text-capitalize">Carrera:</p>
-                    <p class="text-uppercase">TSU en TECNOLOGIAS DE LA
-                        INFORMACIÓN ÁREA DESARROLLO DE SOFTWARE
-                        MULTIPLATAFORMA</p>
-                    <p class="text-uppercase">CRONOGRAMA DE ASIGNATURA</p>
-                </div>
+            <section>
+                <header>
+                    <div class="row">
+                        <div>
+                            <span>Carrera: </span>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, magni.</span>
+                        </div>
+                        <span>Cronograma de asignatura</span>
 
-                <table class="table table-responsive table-secondary mb-4 mytable ">
-                    <thead>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <div>
+                                    <span>Elaboro:</span>
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, esse.</span>
+                                </div>
+                                <div>
+                                    <span>Cuatrimestre:</span>
+                                    <span>5°</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span>Materia:</span>
+                                <span>Ingles VI</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <span>Fecha:</span>
+                                <span>03/01/2024</span>
+                            </div>
+                            <div>
+                                <span>Referencia:</span>
+                                <span>5</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <table class="table table-bordered border-dark">
+                    <thead class="text-center">
                         <tr>
-                            <th scope="col">Sesión por semana</th>
-                            <th scope="col">Fecha </th>
-                            <th scope="col">Unidades temáticas/ Temas que
-                                integran la asignatura</th>
-                            <th scope="col">Saber Hacer</th>
-                            <th scope="col">Métodos y técnicas de enseñanza</th>
-                            <th scope="col">Instrumentos de evaluación y tipos
-                                de reactivos.</th>
-                            <th scope="col">Horas</th>
+                            <th scope="col" rowspan="2">Sesión por semana</th>
+                            <th scope="col" rowspan="2">Fecha</th>
+                            <th scope="col" rowspan="2">Unidades temáticas / Temas que integran la asignatura</th>
+                            <th scope="col" rowspan="2">Saber hacer</th>
+                            <th scope="col" rowspan="2">Métodos y técnicas de enseñanza</th>
+                            <th scope="col" rowspan="2">Instrumentos de evaluación y tipos de reactivos</th>
+                            <th scope="col" colspan="2">Horas</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">T</th>
+                            <th scope="col">P</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
+                            <td>Lorem</td>
+                            <td>Lorem</td>
+                            <td>Lorem</td>
+                            <td>Lorem</td>
+                            <td>Lorem</td>
+                            <td>Lorem</td>
+                            <td>Lorem</td>
+                            <td>Lorem</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr class="text-center">
+                            <th colspan="8">Footer</th>
+                        </tr>
+                    </tfoot>
                 </table>
-            </div>
-
-        </section>
-
-        <div class="btnimp container-fluid">
-            <button class="btn btn-primary btn-lg" id="pdfout" type="submit">Button</button>
-        </div>
-
-        <script>
-            var maintable = document.getElementById('maintable'), pdfout = document.getElementById('pdfout');
-            pdfout.onclick = function () {
-                var doc = new jsPDF('p', 'pt', 'letter');
-                var margin = 20;
-                var scale = (doc.internal.pageSize.width - margin * 2) / document.body.clientWidth;
-                var scale_mobile = (doc.internal.pageSize.width - margin * 2) / document.body.getBoundingClientRect();
-
-
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-
-                    doc.html(maintable, {
-                        x: margin,
-                        y: margin,
-                        html2canvas: {
-                            scale: scale_mobile,
-                        },
-                        callback: function (doc) {
-                            doc.output('dataurlnewwindow', { filename: 'pdf.pdf' });
-                        }
-                    });
-                } else {
-
-                    doc.html(maintable, {
-                        x: margin,
-                        y: margin,
-                        html2canvas: {
-                            scale: scale,
-                        },
-                        callback: function (doc) {
-                            doc.output('dataurlnewwindow', { filename: 'pdf.pdf' });
-                        }
-                    });
-                }
-            };
-        </script>
+            </section>
+        </main>
 
     </body>
+
+    <script type="module" src="./scripts/obtener-cronograma.js"></script>
 
 </html>
