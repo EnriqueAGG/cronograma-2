@@ -26,19 +26,22 @@ const main = () => {
     // TODO: aquí podemos hacer más validaciones para los campos
 
 
-    console.log(inputsFormulario)
     // si hay campos vacíos, mostrar alerta y no ejecutar nada más
     if (errors) {
       alert('Todos los campos son obligatorios 🚨')
       return
     }
-
-
     // obtenemos la alerta y se inicializa para poder usar sus métodos
+
     const $toast = document.querySelector('.toast')
     const toast = new bootstrap.Toast($toast)
 
     try {
+
+      // transformar los datos. para guardarlos correctamente en la BD
+      const nuevaFila = formatearDatos(inputsFormulario)
+
+      console.log(nuevaFila)
 
       // TODO: guardar los datos en supabase.
       const { data, error } = await supabase.from('').insert({ ...inputsFormulario })
@@ -69,6 +72,37 @@ const main = () => {
 
   })
 
+  const formatearDatos = (inputsFormulario) => {
+
+    const [year1, month1, day1] = inputsFormulario['fecha-inicio'].split('-')
+    const [year2, month2, day2] = inputsFormulario['fecha-final'].split('-')
+
+    const date1 = new Date(+year1, +month1 - 1, +day1)
+    const date2 = new Date(+year2, +month2 - 1, +day2)
+
+    const d1 = date1.getUTCDate()
+    const d2 = date2.getUTCDate()
+    const m1 = date1.toLocaleDateString('es-MX', { month: 'long' }).toLocaleUpperCase()
+    const m2 = date2.toLocaleDateString('es-MX', { month: 'long' }).toLocaleUpperCase()
+
+    const fecha = m1 === m2
+      ? `${d1} - ${d2} \n ${m1}`
+      : `${d1} ${m1} - ${d2} ${m2}`
+
+    const nuevaFila = {
+
+      sesion: `${inputsFormulario.sesion} HRS`,
+      fecha,
+      p: inputsFormulario['hora-p'],
+      t: inputsFormulario['hora-t'],
+      metodos: inputsFormulario['metodos'],
+      saber: inputsFormulario['saber-hacer'],
+      temas: inputsFormulario['temas'],
+      evaluacion: inputsFormulario['evaluacion'],
+    }
+
+    return nuevaFila
+  }
 
   const showError = (error, $toast, toast) => {
     console.log(error)
