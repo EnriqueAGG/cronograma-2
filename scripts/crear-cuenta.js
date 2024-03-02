@@ -3,6 +3,7 @@ import { supabase } from "./supabase";
 
 //Crear usuario
 const formSignup = document.querySelector('#form-signup')
+
 formSignup.addEventListener('submit', async (e) => {
   e.preventDefault()
   const email = formSignup.querySelector('#email').value
@@ -14,8 +15,7 @@ formSignup.addEventListener('submit', async (e) => {
   const { error } = await supabase.auth.signUp({
     email,
     password, options: {
-      emailRedirectTo: "http://localhost:5173/crear.html"
-
+      emailRedirectTo: `${window.location.origin}/cronograma.html`
     }
   })
 
@@ -23,7 +23,6 @@ formSignup.addEventListener('submit', async (e) => {
     successMessage.textContent = 'Revise su bandeja para confirmar su correo electrónico'
     return
   }
-
 
   errorMessage.style.display = 'block'
 
