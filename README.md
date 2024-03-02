@@ -1,4 +1,14 @@
-Query para crear la tabla "cronograma"
+## Variables de entorno
+
+1. Crea un archivo **.env** (si es que no existe).
+2. Agrega las variables y ponles el valor con tus datos relacionados a tu proyecto de supabase
+
+```tsx
+VITE_ANON_KEY=""
+VITE_URL=""
+```
+
+## Query para crear la tabla "cronograma"
 
 Ejecuta esta query en la sección **SQL Editor** de supabase para crear la tabla.
 
