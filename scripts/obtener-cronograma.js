@@ -39,6 +39,33 @@ const main = () => {
       document.querySelector('#referencia').textContent = data.referencia
       document.querySelector('#grupos').textContent = data.grupos
 
+      if (data.filas !== null) {
+        let filas = ''
+        JSON.parse(data.filas).map(({
+          sesion,
+          fecha,
+          p,
+          t,
+          metodos,
+          saber,
+          temas,
+          evaluacion,
+        }) => {
+          filas += `
+            <tr class="border border-dark ">
+              <td class="border border-dark">${sesion}</td>
+              <td class="border border-dark  text-center">${fecha}</td>
+              <td class="border border-dark">${temas}</td>
+              <td class="border border-dark">${saber} </td>
+              <td class="border border-dark">${metodos}</td>
+              <td class="border border-dark">${evaluacion}</td>
+              <td class="border border-dark">${p}</td>
+              <td class="border border-dark">${t}</td>
+            </tr> 
+          `
+        })
+        document.querySelector('#table-body').innerHTML = filas
+      }
 
     } catch (error) {
       console.log(error)

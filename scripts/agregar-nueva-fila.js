@@ -5,21 +5,31 @@ import { supabase } from '../scripts/supabase'
 
 const main = () => {
 
-  // Si el usuario no esta autenticado se enviara al login.
   // Este evento se dispara cuando el contenido cargue
   document.addEventListener('DOMContentLoaded', async () => {
+    // Si el usuario no esta autenticado se enviara al login.
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) {
       console.log('usuario no autenticado!')
       window.location.href = `${window.location.origin}/login.html`
+      return
+    }
+
+    // Para agregar una nueva fila debe seleccionar un cronograma antes.
+    // Por lo cual si no ha seleccionado uno, se reemviara al index para que seleccione un cronograma y agregue una nueva fila
+    const id = sessionStorage.getItem('cronograma-seleccionado')
+    if (!id) {
+      alert(`El cronograma que estas buscando no existe, selecciona otro`)
+      window.location.href = `${window.location.origin}/index.html`
+      return
     }
   })
 
   // obtenemos el formulario
-  const form = document.querySelector('#form-nueva-fila')
+  const formulario = document.querySelector('#form-nueva-fila')
 
   // ejecutar acciones cuando se haga submit del formulario
-  form.addEventListener('submit', async (e) => {
+  formulario.addEventListener('submit', async (e) => {
     e.preventDefault()
 
     // obtener los valores de los campos dentro del form
@@ -51,11 +61,17 @@ const main = () => {
       // transformar los datos. para guardarlos correctamente en la BD
       const nuevaFila = formatearDatos(inputsFormulario)
 
-      console.log(nuevaFila)
-
+      const id = sessionStorage.getItem('cronograma-seleccionado')
       // TODO: guardar los datos en supabase.
-      const { data, error } = await supabase.from('').insert({ ...inputsFormulario })
+      const cronograma = await supabase.from('cronograma').select('*').eq('id', id).single()
 
+      const filasAnteriores = cronograma.data.filas !== null ? cronograma.data.filas : []
+      const cronogramaActualizado = {
+        ...cronograma.data,
+        filas: JSON.stringify([...filasAnteriores, { ...nuevaFila }])
+      }
+
+      const { data, error } = await supabase.from('cronograma').update({ ...cronogramaActualizado }).eq('id', id)
 
       // Si hay un error al querer guardar en base de datos, mostrar mensaje
       if (error) {
