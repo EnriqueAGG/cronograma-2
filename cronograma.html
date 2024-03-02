@@ -22,13 +22,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.html">Index</a>
+                            <a class="nav-link" aria-current="page" href="index.html">Cronogramas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="crear-cronograma.html">Crear cronograma</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cronograma.html">Cronograma</a>
                         </li>
                         <li class="nav-item">
                             <button id="btn-logout" class="btn btn-outline-danger ms-4">Cerrar sesión</button>
@@ -44,9 +41,7 @@
                     <div class="d-flex justify-content-center flex-column">
                         <div class="d-flex  align-items-end">
                             <span class="me-2">Carrera: </span>
-                            <span class="fs-5 flex-grow-1 border-2 border-bottom border-dark">Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Iure,
-                                magni.
+                            <span id="carrera" class="fs-5 flex-grow-1 border-2 border-bottom border-dark">
                             </span>
                         </div>
                         <span class="fs-5 text-center my-2 fw-bold">Cronograma de asignatura</span>
@@ -56,30 +51,28 @@
                         <div class=" d-flex flex-column">
                             <div class="d-flex align-items-end gap-2">
                                 <span>Elaboro:</span>
-                                <span class="text-start border-2 border-bottom border-dark">Lorem ipsum dolor
-                                    sit amet
-                                    consectetur adipisicing elit.
-                                    Neque, esse.</span>
+                                <span id="elaboro" class="text-start border-2 border-bottom border-dark"></span>
                             </div>
                             <div class="d-flex align-items-end gap-2">
                                 <span>Materia:</span>
-                                <span class="w-100 border-2 border-bottom border-dark">Ingles VI</span>
+                                <span class="w-100 border-2 border-bottom border-dark" id="materia"></span>
                             </div>
                         </div>
                         <div class="">
                             <div class="d-flex align-items-end gap-2">
                                 <span>Cuatrimestre:</span>
-                                <span class="px-2 border-2 border-bottom border-dark">5°</span>
+                                <span class="px-2 border-2 border-bottom border-dark" id="cuatrimestre"></span>
                             </div>
                         </div>
                         <div class="">
                             <div class="d-flex align-items-end gap-2">
                                 <span class="">Fecha:</span>
-                                <span class="px-2 border-2 border-bottom border-dark">03/01/2024</span>
+                                <span class="px-2 border-2 border-bottom border-dark" id="fecha">03/01/2024</span>
                             </div>
                             <div class="d-flex align-items-end gap-2">
                                 <span>Referencia:</span>
-                                <span class="text-center px-2 w-100 border-2 border-bottom border-dark">5</span>
+                                <span class="text-center px-2 w-100 border-2 border-bottom border-dark"
+                                    id="referencia">5</span>
                             </div>
                         </div>
                     </div>
@@ -141,8 +134,7 @@
                 <div class="d-flex gap-2">
                     <div class="d-flex align-items-end gap-2">
                         <span class="fs-6">Nombres(s) del Docente(s) que imparte(n) la materia:</span>
-                        <span class="pe-4 border-2 border-bottom border-dark fw-bold">Enrique Alberto Martinez
-                            Lopez</span>
+                        <span class="pe-4 border-2 border-bottom border-dark fw-bold" id="docente"></span>
                     </div>
                     <div class="d-flex align-items-end gap-2">
                         <span>Firma</span>
@@ -151,8 +143,7 @@
                     </div>
                     <div class="d-flex align-items-end gap-2">
                         <span>Grupos:</span>
-                        <span class="text-center w-100 border-2 border-bottom border-dark fw-bold ">18
-                            DSM-1D-5A</span>
+                        <span class="text-center w-100 border-2 border-bottom border-dark fw-bold " id="grupos"></span>
                     </div>
                 </div>
 

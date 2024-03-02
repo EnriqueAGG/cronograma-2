@@ -46,9 +46,8 @@ const main = () => {
     const toast = new bootstrap.Toast($toast)
 
     try {
-
       // TODO: guardar los datos en supabase.
-      const { data, error } = await supabase.from('').insert({ ...inputsFormulario })
+      const { data, error } = await supabase.from('cronograma').insert({ ...inputsFormulario })
 
       // Si hay un error al querer guardar en base de datos, mostrar mensaje
       if (error) {

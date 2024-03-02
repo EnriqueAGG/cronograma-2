@@ -6,15 +6,47 @@ import { supabase } from '../scripts/supabase'
 
 const main = () => {
 
-  // Si el usuario no esta autenticado se enviara al login.
   // Este evento se dispara cuando el contenido cargue
   document.addEventListener('DOMContentLoaded', async () => {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) {
-      console.log('usuario no autenticado!')
-      window.location.href = `${window.location.origin}/login.html`
+    // Si el usuario no esta autenticado se enviara al login.
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        console.log('usuario no autenticado!')
+        window.location.href = `${window.location.origin}/login.html`
+      }
+
+      // Obtener los datos del cronograma seleccionado
+      const id = sessionStorage.getItem('cronograma-seleccionado')
+      const { data, error } = await supabase.from('cronograma').select('*').eq('id', +id).single()
+
+      if (error) {
+        console.log(error)
+        if (!data?.id) {
+          alert(`El cronograma que estas buscando no existe, selecciona otro`)
+          window.location.href = `${window.location.origin}/index.html`
+          return
+        }
+        alert(`Hubo un error: ${error.details}`)
+      }
+
+      document.querySelector('#carrera').textContent = data.carrera
+      document.querySelector('#elaboro').textContent = data.elaboro
+      document.querySelector('#materia').textContent = data.materia
+      document.querySelector('#docente').textContent = data.docente
+      document.querySelector('#cuatrimestre').textContent = data.cuatrimestre
+      document.querySelector('#fecha').textContent = data.fecha
+      document.querySelector('#referencia').textContent = data.referencia
+      document.querySelector('#grupos').textContent = data.grupos
+
+
+    } catch (error) {
+      console.log(error)
+      alert(`Hubo un error: ${error.message}`)
     }
   })
+
+
 
   const imprimirPDF = () => {
     document.querySelector('#imprimir-pdf').addEventListener('click', async () => {
