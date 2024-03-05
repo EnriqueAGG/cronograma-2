@@ -15,12 +15,13 @@ formSignup.addEventListener('submit', async (e) => {
   const { error } = await supabase.auth.signUp({
     email,
     password, options: {
-      emailRedirectTo: `${window.location.origin}/cronograma.html`
+      emailRedirectTo: `${window.location.origin}/index.html`
     }
   })
 
   if (!error) {
     successMessage.textContent = 'Revise su bandeja para confirmar su correo electrónico'
+    successMessage.style.display = 'block'
     return
   }
 

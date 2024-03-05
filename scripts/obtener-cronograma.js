@@ -39,6 +39,9 @@ const main = () => {
       document.querySelector('#referencia').textContent = data.referencia
       document.querySelector('#grupos').textContent = data.grupos
 
+  
+
+      console.log(data.filas);
       if (data.filas !== null) {
         let filas = ''
         JSON.parse(data.filas).map(({
@@ -74,7 +77,6 @@ const main = () => {
   })
 
 
-
   const imprimirPDF = () => {
     document.querySelector('#imprimir-pdf').addEventListener('click', async () => {
 
@@ -86,11 +88,26 @@ const main = () => {
         margin: 1,
         filename: `${crypto.randomUUID()}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 1 },
-        jsPDF: { unit: 'in', format: 'legal', orientation: 'landscape' }
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'l' }
       };
 
-      await html2pdf().set(opt).from(document.querySelector('main')).save();
+      const a = await html2pdf().set(opt).from(document.querySelector('main')).toPdf().get('pdf')
+      let totalPages = a.internal.getNumberOfPages();
+
+      for (let i = 1; i <= totalPages; i++) {
+        await a.setPage(i);
+        await a.setFontSize(10);
+        await a.setTextColor(0,0,0);
+        
+        console.log(a.internal.pageSize.getWidth()); //14
+        console.log(a.internal.pageSize.getHeight()); //8.5
+        
+        await a.text("R 05/1213", 0.5, 8.1);
+        await a.text("F-DC-16", 13, 8.1);
+        
+      }
+      await a.save()
 
       document.querySelectorAll('.hide-pdf').forEach(btn => {
         btn.style.display = 'inline'
