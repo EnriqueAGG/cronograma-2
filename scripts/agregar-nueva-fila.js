@@ -65,7 +65,8 @@ const main = () => {
       // TODO: guardar los datos en supabase.
       const cronograma = await supabase.from('cronograma').select('*').eq('id', id).single()
 
-      const filasAnteriores = cronograma.data.filas !== null ? cronograma.data.filas : []
+      const filasAnteriores = cronograma.data.filas !== null ? JSON.parse(cronograma.data.filas) : []
+
       const cronogramaActualizado = {
         ...cronograma.data,
         filas: JSON.stringify([...filasAnteriores, { ...nuevaFila }])
