@@ -19,7 +19,7 @@ formLogin.addEventListener('submit', async (e) => {
 
   if (data.session) {
     sessionStorage.setItem('user', data.user)
-    window.location.href = `${window.location.origin}/cronograma.html`
+    window.location.href = `${window.location.origin}/index.html`
     return
   }
 

@@ -129,8 +129,8 @@ const main = () => {
 
       sesion: `${inputsFormulario.sesion} HRS`,
       fecha,
-      p: inputsFormulario['hora-p'],
-      t: inputsFormulario['hora-t'],
+      p: inputsFormulario['hora-t'],
+      t: inputsFormulario['hora-p'],
       metodos: inputsFormulario['metodos'],
       saber: inputsFormulario['saber-hacer'],
       temas: inputsFormulario['temas'],
