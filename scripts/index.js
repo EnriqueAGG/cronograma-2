@@ -35,7 +35,6 @@ const main = () => {
         <span class="fw-bold fs-5">${carrera}</span>
         <span class="fs-6">${materia}</span>
         </li> 
-        <button id="borrarCronograma" class="hide-pdf btn btn-primary">BORRAR</button>
          `
     })
     // mostrar los cronogramas en pantalla

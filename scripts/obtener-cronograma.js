@@ -41,9 +41,10 @@ const main = () => {
       document.querySelector('#referencia').textContent = data.referencia
       document.querySelector('#grupos').textContent = data.grupos
 
-  
 
-      console.log(data.filas);
+      let totalT = 0
+      let totalP = 0
+
       if (data.filas !== null) {
         let filas = ''
         JSON.parse(data.filas).map(({
@@ -57,6 +58,10 @@ const main = () => {
           temas,
           evaluacion,
         }) => {
+          
+          totalT+= +t
+          totalP+= +p
+
           filas += `
             <tr class="border border-dark position-relative">
             <td class="border border-dark">
@@ -87,18 +92,44 @@ const main = () => {
                 <span class=" item-show d-block">${evaluacion}</span>
               </td>
               <td class="border border-dark">
-                <textarea class="ta d-none ta-p-${id}" >${p}</textarea>
-                <span class=" item-show d-block">${p}</span>
+                <textarea class="ta d-none ta-p-${id}" >${t}</textarea>
+                <span class=" item-show d-block">${t}</span>
               </td>
               <td class="border border-dark">
-                <textarea class="ta d-none ta-t-${id}" >${t}</textarea>
-                <span class=" item-show d-block">${t}</span>
+                <textarea class="ta d-none ta-t-${id}" >${p}</textarea>
+                <span class=" item-show d-block">${p}</span>
                 <button data-id="${id}"  class="btn-editar-fila hide-pdf" >Editar</button>
               </td>
             </tr> 
           `
         })
-        document.querySelector('#table-body').innerHTML = filas
+
+        document.querySelector('#table-body').innerHTML = filas + `
+            <tr class="d-none" style="border-color:transparent;" >
+              <td class="bg-transparent">
+              </td>
+              <td class="bg-transparent">
+              </td>
+              <td class="bg-transparent">
+              </td>
+              <td class="bg-transparent">
+              </td>
+              <td class="bg-transparent">
+              </td>
+              <td class="border border-dark ">
+              <div class="d-flex justify-content-end gap-1">
+              <span>Total de horas:</span> <span> ${totalP + totalT}</span>              
+              </div>
+              </td>
+              <td class="border border-dark">
+              ${totalT}
+              </td>
+              <td class="border border-dark">
+              ${totalP}
+              </td>
+            </tr> 
+        `
+        
       }
 
       // editar fila
@@ -209,8 +240,22 @@ const main = () => {
     }
   })
 
+  // borrar el cronograma de la base de datos
+  const borrarCronogograma = () => {
+    document.querySelector('#borrar-cronograma').addEventListener('click', async() => {
+      const id = sessionStorage.getItem('cronograma-seleccionado')
 
+      const { error } = await supabase.from('cronograma').delete().eq('id', id);
 
+      if(!error){
+        alert('Cronograma eliminado correctamente')
+        window.location.href = `${window.location.origin}/index.html`
+      }
+
+    })
+  }
+  borrarCronogograma()
+  
   const imprimirPDF = () => {
     document.querySelector('#imprimir-pdf').addEventListener('click', async () => {
 
