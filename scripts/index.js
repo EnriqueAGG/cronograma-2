@@ -34,13 +34,15 @@ const main = () => {
         class="cronograma-item border border-dark p-3 rounded btn w-100 text-start btn-secondary d-flex flex-column gap-1">
         <span class="fw-bold fs-5">${carrera}</span>
         <span class="fs-6">${materia}</span>
-      </li> 
-      `
+        </li> 
+        <button id="borrarCronograma" class="hide-pdf btn btn-primary">BORRAR</button>
+         `
     })
     // mostrar los cronogramas en pantalla
     document.querySelector('#lista-cronogramas').innerHTML = template
 
-
+    
+    
     // obtener todos los botones
     document.querySelectorAll('.cronograma-item').forEach(cronograma => {
       // al dar click al boton te envia a cronograma.html y te muestra el cronograma que seleccionaste
@@ -67,4 +69,6 @@ const main = () => {
 }
 
 main()
+
+
 

@@ -30,12 +30,14 @@ const main = () => {
         alert(`Hubo un error: ${error.details}`)
       }
 
+      const intl = new Intl.DateTimeFormat()
+
       document.querySelector('#carrera').textContent = data.carrera
       document.querySelector('#elaboro').textContent = data.elaboro
       document.querySelector('#materia').textContent = data.materia
       document.querySelector('#docente').textContent = data.docente
       document.querySelector('#cuatrimestre').textContent = data.cuatrimestre
-      document.querySelector('#fecha').textContent = data.fecha
+      document.querySelector('#fecha').textContent = intl.format(new Date(`${data.fecha} `))
       document.querySelector('#referencia').textContent = data.referencia
       document.querySelector('#grupos').textContent = data.grupos
 
@@ -104,7 +106,7 @@ const main = () => {
         console.log(a.internal.pageSize.getHeight()); //8.5
         
         await a.text("R 05/1213", 0.5, 8.1);
-        await a.text("F-DC-16", 13, 8.1);
+        await a.text("F-DC-16", 10, 8.1);
         
       }
       await a.save()
