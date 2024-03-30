@@ -47,6 +47,7 @@ const main = () => {
       if (data.filas !== null) {
         let filas = ''
         JSON.parse(data.filas).map(({
+          id,
           sesion,
           fecha,
           p,
@@ -57,20 +58,150 @@ const main = () => {
           evaluacion,
         }) => {
           filas += `
-            <tr class="border border-dark ">
-              <td class="border border-dark">${sesion}</td>
-              <td class="border border-dark  text-center">${fecha}</td>
-              <td class="border border-dark">${temas}</td>
-              <td class="border border-dark">${saber} </td>
-              <td class="border border-dark">${metodos}</td>
-              <td class="border border-dark">${evaluacion}</td>
-              <td class="border border-dark">${p}</td>
-              <td class="border border-dark">${t}</td>
+            <tr class="border border-dark position-relative">
+            <td class="border border-dark">
+            <button data-id="${id}"  class="btn-eliminar-fila hide-pdf">
+            <img src="/icons8-cerrar-ventana-48.png" style="width:18px" />
+            </button>
+                <textarea class="ta d-none ta-sesion-${id}" >${sesion}</textarea>
+                <span class="item-show d-block">${sesion}</span>
+              </td>
+              <td class="border border-dark text-center">
+                <textarea class="ta d-none ta-fecha-${id}" >${fecha}</textarea>
+                <span class=" item-show d-block">${fecha}</span>
+              </td>
+              <td class="border border-dark">
+                <textarea class="ta d-none ta-temas-${id}" >${temas}</textarea>
+                <span class=" item-show d-block">${temas}</span>
+              </td>
+              <td class="border border-dark">
+                <textarea class="ta d-none ta-saber-${id}" >${saber}</textarea> 
+                <span class=" item-show d-block">${saber}</span>
+              </td>
+              <td class="border border-dark">
+                <textarea class="ta d-none ta-metodos-${id}" >${metodos}</textarea>
+                <span class=" item-show d-block">${metodos}</span>
+              </td>
+              <td class="border border-dark">
+                <textarea class="ta d-none ta-evaluacion-${id}" >${evaluacion}</textarea>
+                <span class=" item-show d-block">${evaluacion}</span>
+              </td>
+              <td class="border border-dark">
+                <textarea class="ta d-none ta-p-${id}" >${p}</textarea>
+                <span class=" item-show d-block">${p}</span>
+              </td>
+              <td class="border border-dark">
+                <textarea class="ta d-none ta-t-${id}" >${t}</textarea>
+                <span class=" item-show d-block">${t}</span>
+                <button data-id="${id}"  class="btn-editar-fila hide-pdf" >Editar</button>
+              </td>
             </tr> 
           `
         })
         document.querySelector('#table-body').innerHTML = filas
       }
+
+      // editar fila
+      document.querySelectorAll('.btn-editar-fila').forEach( btn => {
+        btn.addEventListener('click', async() => {
+
+          if(btn.textContent === 'Editar'){
+            btn.textContent = 'Guardar';
+            btn.style.right =  '-60px';
+            btn.parentElement.parentElement.querySelectorAll('.item-show').forEach( span =>  {
+              span.classList.remove('d-block')
+              span.classList.add('d-none')
+            })
+            btn.parentElement.parentElement.querySelectorAll('.ta').forEach( textarea =>  {
+              textarea.classList.add('d-block')
+              textarea.classList.remove('d-none')
+            })
+            
+          }else {
+            btn.style.right =  '-50px';
+            btn.parentElement.parentElement.querySelectorAll('.item-show').forEach( span =>  {
+              span.classList.add('d-block')
+              span.classList.remove('d-none')
+            })
+            btn.parentElement.parentElement.querySelectorAll('.ta').forEach( textarea =>  {
+              textarea.classList.remove('d-block')
+              textarea.classList.add('d-none')
+            })
+
+            const id = sessionStorage.getItem('cronograma-seleccionado')
+
+            const cronograma = await supabase.from('cronograma').select('*').eq('id', id).single()
+            
+            const newFilas = JSON.parse(cronograma.data.filas).map( fila =>  {
+
+              if(fila.id === btn.dataset.id){
+                fila.sesion = document.querySelector(`.ta-sesion-${btn.dataset.id}`).value
+                fila.fecha = document.querySelector(`.ta-fecha-${btn.dataset.id}`).value
+                fila.p = document.querySelector(`.ta-p-${btn.dataset.id}`).value
+                fila.t = document.querySelector(`.ta-t-${btn.dataset.id}`).value
+                fila.metodos = document.querySelector(`.ta-metodos-${btn.dataset.id}`).value
+                fila.saber = document.querySelector(`.ta-saber-${btn.dataset.id}`).value
+                fila.temas = document.querySelector(`.ta-temas-${btn.dataset.id}`).value
+                fila.evaluacion = document.querySelector(`.ta-evaluacion-${btn.dataset.id}`).value
+              }
+              return fila
+            })
+            
+            const cronogramaActualizado = {
+              ...cronograma.data,
+              filas: JSON.stringify([...newFilas])
+            }
+
+            const { data, error } = await supabase.from('cronograma').update({ ...cronogramaActualizado }).eq('id', id)
+
+            btn.textContent = 'Editar'
+
+            if(!error){
+              console.log(data);
+            
+              document.querySelector(`.ta-sesion-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-sesion-${btn.dataset.id}`).value
+              document.querySelector(`.ta-fecha-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-fecha-${btn.dataset.id}`).value
+              document.querySelector(`.ta-p-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-p-${btn.dataset.id}`).value
+              document.querySelector(`.ta-t-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-t-${btn.dataset.id}`).value
+              document.querySelector(`.ta-metodos-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-metodos-${btn.dataset.id}`).value
+              document.querySelector(`.ta-saber-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-saber-${btn.dataset.id}`).value
+              document.querySelector(`.ta-temas-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-temas-${btn.dataset.id}`).value
+              document.querySelector(`.ta-evaluacion-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-evaluacion-${btn.dataset.id}`).value
+
+              alert('Fila actualizada')
+
+            }
+          }
+
+        })
+      })
+
+      // eliminar fila
+      document.querySelectorAll('.btn-eliminar-fila').forEach( btn  => {
+        btn.addEventListener('click', async()=> {
+
+          const id = sessionStorage.getItem('cronograma-seleccionado')
+
+          const cronograma = await supabase.from('cronograma').select('*').eq('id', id).single()
+          
+          const newFilas = JSON.parse(cronograma.data.filas).filter( fila => fila.id != btn.dataset.id )
+          
+          const cronogramaActualizado = {
+            ...cronograma.data,
+            filas: JSON.stringify([...newFilas])
+          }
+
+          const { data, error } = await supabase.from('cronograma').update({ ...cronogramaActualizado }).eq('id', id)
+
+          if(!error){
+            console.log(data);
+          
+            alert('Fila Eliminada')
+            btn.parentElement.parentElement.remove()
+          }
+
+        })
+      })
 
     } catch (error) {
       console.log(error)
@@ -79,9 +210,11 @@ const main = () => {
   })
 
 
+
   const imprimirPDF = () => {
     document.querySelector('#imprimir-pdf').addEventListener('click', async () => {
 
+      // ocultar botones antes de imprimir
       document.querySelectorAll('.hide-pdf').forEach(btn => {
         btn.style.display = 'none'
       })
@@ -111,10 +244,10 @@ const main = () => {
       }
       await a.save()
 
+      // volver a colcoar botones 
       document.querySelectorAll('.hide-pdf').forEach(btn => {
         btn.style.display = 'inline'
       })
-
 
     })
   }

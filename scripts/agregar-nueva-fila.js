@@ -127,7 +127,7 @@ const main = () => {
       : `${d1} ${m1} - ${d2} ${m2}`
 
     const nuevaFila = {
-
+      id: `${crypto.randomUUID()}`,
       sesion: `${inputsFormulario.sesion} HRS`,
       fecha,
       p: inputsFormulario['hora-t'],
