@@ -65,9 +65,9 @@ const main = () => {
           filas += `
             <tr class="border border-dark position-relative">
             <td class="border border-dark">
-            <button data-id="${id}"  class="btn-eliminar-fila hide-pdf">
-            <img src="/icons8-cerrar-ventana-48.png" style="width:18px" />
-            </button>
+            <a data-id="${id}"  class="btn-eliminar-fila hide-pdf">
+            <img src="/borrar.png" style="width:18px;height:18px; cursor:pointer;" />
+            </a>
                 <textarea class="ta d-none ta-sesion-${id}" >${sesion}</textarea>
                 <span class="item-show d-block">${sesion}</span>
               </td>
@@ -98,7 +98,7 @@ const main = () => {
               <td class="border border-dark">
                 <textarea class="ta d-none ta-t-${id}" >${p}</textarea>
                 <span class=" item-show d-block">${p}</span>
-                <button data-id="${id}"  class="btn-editar-fila hide-pdf" >Editar</button>
+                <a data-id="${id}" class="btn-editar-fila hide-pdf btn btn-success">Editar</a>
               </td>
             </tr> 
           `
@@ -168,8 +168,8 @@ const main = () => {
               if(fila.id === btn.dataset.id){
                 fila.sesion = document.querySelector(`.ta-sesion-${btn.dataset.id}`).value
                 fila.fecha = document.querySelector(`.ta-fecha-${btn.dataset.id}`).value
-                fila.p = document.querySelector(`.ta-p-${btn.dataset.id}`).value
-                fila.t = document.querySelector(`.ta-t-${btn.dataset.id}`).value
+                fila.p = document.querySelector(`.ta-t-${btn.dataset.id}`).value
+                fila.t = document.querySelector(`.ta-p-${btn.dataset.id}`).value
                 fila.metodos = document.querySelector(`.ta-metodos-${btn.dataset.id}`).value
                 fila.saber = document.querySelector(`.ta-saber-${btn.dataset.id}`).value
                 fila.temas = document.querySelector(`.ta-temas-${btn.dataset.id}`).value
@@ -192,8 +192,8 @@ const main = () => {
             
               document.querySelector(`.ta-sesion-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-sesion-${btn.dataset.id}`).value
               document.querySelector(`.ta-fecha-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-fecha-${btn.dataset.id}`).value
-              document.querySelector(`.ta-p-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-p-${btn.dataset.id}`).value
               document.querySelector(`.ta-t-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-t-${btn.dataset.id}`).value
+              document.querySelector(`.ta-p-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-p-${btn.dataset.id}`).value
               document.querySelector(`.ta-metodos-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-metodos-${btn.dataset.id}`).value
               document.querySelector(`.ta-saber-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-saber-${btn.dataset.id}`).value
               document.querySelector(`.ta-temas-${btn.dataset.id}`).parentElement.children[1].textContent = document.querySelector(`.ta-temas-${btn.dataset.id}`).value
